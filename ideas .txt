@@ -1,0 +1,53 @@
+COMANDOS    
+- denuncia:  
+    Comando para levntar una orden de alejamiento
+        ARGS:
+            - ping: para que se le agregue a una mas       
+- denuncias:
+    Comando para ver el conteo de ordenes de alejamiento
+        ARGS:
+            - ping: para ver las ordenes del usuario pingeado
+            - *:    para listar el top 10 de usuario con mas ordenes
+            - None: para ver la cantidad de ordenes del usario quien mando el comando
+- llamada:  
+    Comando para los llamados de atencion de usuarios en el caso de faltar a las reglas
+        ARGS:
+            - add: para agregar una llamada de atencion a un usuario 
+                ROL: docente o gen1(mod)
+            - see: mostrara tus llamados de atencion 
+                ROL: general
+- vocalario:        
+    Comando de uso de rol general para el conteo del vocalario
+    ARGS:
+            - ping:     para ver los vocalarios que tiene.
+            - *:        para listar el top 10 con mas vocalario.
+            - None:     para ver el conteo de vocalario del user que mando el mensaje
+- stars:            
+    Comando usado por rol general para el conteo de estrellas
+        ARGS:
+            - ping de usuario: para ver las estrellas que tiene.
+            - *: para listar el top 10 con mas estrellas.
+            - None: para ver el conteo de estrellas del user que mando el mensaje             
+- addstar           
+    Comando que solo usara el rol docente para agregar estrella alguien
+        ARGS:
+            - el ping del usuario
+- autodestrucccion:  
+    Comando que mandara un mensaje de confirmacion que solo kaidon puede contestar
+        Y: se apagara el bot con un mensaje
+        N: Se cancela
+- profile
+    Despliega tu perfil con las cantidad de estrellas, ordenes de alejamiento y llmadas de atencion
+- ayuda
+    despliegue un embed message  
+- creditos
+    despliegue los respectivos creditos de los recursos usador por la 1-C
+        - banner: pipo
+        - escudo: gkuro
+        - gifs: scorp y bom-val 
+        - memes: scorp
+        - dev: kaidon  
+
+NOTA:
+    - El almacenamiento de esta data se encuentra en SUPABASE (postgres)
+    - ideas dadas por varias personas

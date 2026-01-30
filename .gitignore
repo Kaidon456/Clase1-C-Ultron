@@ -205,5 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+#Ideas y Toekns NO SUBIR
 save.txt
-ideas .txt
+ideas.txt
+Tokens.json

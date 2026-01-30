@@ -47,9 +47,8 @@ def SelectData():
     .select("*")
     .execute()
 )
-    print(response)
 
-# <----------------------------------Demas data---------------------------------->
+# <----------------------------------Ordenes de alejamiento---------------------------------->
 def AddOrden(id):
     """FUNCION AGREGAR ORDEN DE ALEJAMIENTO"""
     response = (
@@ -84,21 +83,7 @@ def SelectOrden(id):
             .execute())
         return response
 
-def AddStar():
-    """FUNCION INSERTAR"""
-
-def AddAtencion():
-    """FUNCION INSERTAR"""
-
-def SelectUser(id):
-    """Despliega y retorna la data del usuario en la base de datos"""
-    response = (
-        supabase.table("c1_usuario")
-        .select("order, vocalario, stars, atention")
-        .match({"id": id})
-        .execute())
-    return response
-
+# <----------------------------------Vocalario---------------------------------->
 def SelectVocalario(opc):
     if opc is None:
         response = (
@@ -113,3 +98,97 @@ def SelectVocalario(opc):
             .rpc('sum_vocalario')
             .execute())
         return response
+
+# <----------------------------------Stars---------------------------------->
+def AddStar():
+    """FUNCION INSERTAR"""
+
+# <----------------------------------Atencion---------------------------------->
+def AddAtencion():
+    """FUNCION INSERTAR"""
+
+# <----------------------------------Contadores---------------------------------->
+def ContPico():
+    """Funcion para actualizar el contador de la Tabla c1_conteos del registro 'pito' """
+    response = (
+        supabase.table("c1_conteos")
+        .select("conteo")
+        .match({"Palabra": "Pito"})
+        .execute())
+    cont = response.data[0].get('conteo')
+    cont += 1
+    response = (
+        supabase.table("c1_conteos")
+        .update({"conteo": cont})
+        .eq("id", 2)
+        .execute())
+
+def ContWeon():
+    """Funcion para actualizar el contador de la Tabla c1_conteos del registro 'weon'"""
+    response = (
+        supabase.table("c1_conteos")
+        .select("conteo")
+        .match({"Palabra": "Weon"})
+        .execute())
+    cont = response.data[0].get('conteo')
+    cont += 1
+    response = (
+        supabase.table("c1_conteos")
+        .update({"conteo": cont})
+        .eq("id", 3)
+        .execute())
+
+def ContWey():
+    """Funcion para actualizar el contador de la Tabla c1_conteos del registro 'wey'"""
+    response = (
+        supabase.table("c1_conteos")
+        .select("conteo")
+        .match({"Palabra": "Wey"})
+        .execute())
+    cont = response.data[0].get('conteo')
+    cont += 1
+    response = (
+        supabase.table("c1_conteos")
+        .update({"conteo": cont})
+        .eq("id", 4)
+        .execute())
+
+def ContKbezuko():
+    """Funcion para actualizar el contador de la Tabla c1_conteos del registro 'Kbezuko'"""
+    response = (
+        supabase.table("c1_conteos")
+        .select("conteo")
+        .match({"Palabra": "Kbezuko"})
+        .execute())
+    cont = response.data[0].get('conteo')
+    cont += 1
+    response = (
+        supabase.table("c1_conteos")
+        .update({"conteo": cont})
+        .eq("id", 1)
+        .execute())
+
+# <----------------------------------Data General---------------------------------->
+def SelectUser(id):
+    """Despliega y retorna la data del usuario en la base de datos"""
+    response = (
+        supabase.table("c1_usuario")
+        .select("order, vocalario, stars, atention")
+        .match({"id": id})
+        .execute())
+    return response
+
+def SelectCont():
+    """Despliega los contadores generales"""
+    responseCont = (
+        supabase.table("c1_conteos")
+        .select("*")
+        .execute())
+    responseVoca = (
+        supabase
+        .rpc('sum_vocalario')
+        .execute())
+    response = [["Vocalario",responseVoca.data]]
+    for datos in responseCont.data:
+        response.append([datos.get('Palabra'),datos.get('conteo')])
+    return response
